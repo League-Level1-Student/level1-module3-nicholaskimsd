@@ -5,6 +5,8 @@ package jukebox;
  */
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -12,7 +14,10 @@ import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import javazoom.jl.player.advanced.AdvancedPlayer;
@@ -20,21 +25,18 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 /*   If you don't have javazoom.jar in your project, you can download it from here: http://bit.ly/javazoom
  *   Right click your project and add it as a JAR (Under Java Build Path > Libraries).*/
 
-public class Jukebox implements Runnable {
+public class Jukebox implements Runnable, ActionListener{
 
     public void run() {
 
 		// 1. Find an mp3 on your computer or on the Internet.
 		// 2. Create a Song object for that mp3
-    	Song bye = new Song("Friendly-Machines.mp3");
-		// 3. Play the Song
-    bye.play();
-		/*
-		 * 4. Create a user interface for your Jukebox so that the user can to
-		 * choose which song to play. You can use can use a different button for
-		 * each song, or a picture of the album cover. When the button or album
-		 * cover is clicked, stop the currently playing song, and play the one
-		 * that was selected.
+    	
+		// * 4. Create a user interface for your Jukebox so that the user can to
+		 //* choose which song to play. You can use can use a different button for
+		 //* each song, or a picture of the album cover. When the button or album
+		 //* cover is clicked, stop the currently playing song, and play the one
+		 /* that was selected.
 		 */
     }
     
@@ -45,6 +47,66 @@ public class Jukebox implements Runnable {
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
 	}
+	public static void main(String[] args) {
+		Jukebox fc = new Jukebox();
+		fc.showButton();
+	}
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JButton leftButton = new JButton();
+	JButton button = new JButton();
+	JButton rightButton = new JButton();
+
+
+
+	public void showButton() {
+
+		System.out.println("Button clicked");
+	    frame.setVisible(true);
+	    frame.add(panel);
+		panel.add(button);
+		button.setText("CLCIK");
+		button.addActionListener (this);
+		panel.add(leftButton);
+		leftButton.setText("CLICK");
+		leftButton.addActionListener(this);
+		panel.add(rightButton);
+		rightButton.setText("CLICK");
+		rightButton.addActionListener(this);
+		frame.pack();
+
+	    
+	}
+	Song hi = new Song("MINE DIAMONDS miNECRAFT PARODY OF TAKE ON ME.mp3");
+	Song bye = new Song("The Duck Song.mp3");
+	Song kai = new Song("Baby Shark Dance Sing and Dance! Animal Songs PINKFONG Songs for Children.mp3");
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton pressed = (JButton) e.getSource();
+		if(leftButton==pressed) {
+		hi.play();
+		bye.stop();
+		kai.stop();
+		}
+		else if(button==pressed) {
+		bye.play();
+		hi.stop();
+		kai.stop();
+		}
+		else if (rightButton==pressed) {
+			kai.play();
+			bye.stop();
+			hi.stop();
+		}
+		
+	}
+
+	
+	
+			
+		
+	
 
 }
 
@@ -130,6 +192,20 @@ class Song {
 		} catch (FileNotFoundException e) {
 			return this.getClass().getResourceAsStream(songAddress);
 		}
+		
+
+	    
 	}
+	
+
+	
+	
+
+
+	
+
+
+
+	
 }
 

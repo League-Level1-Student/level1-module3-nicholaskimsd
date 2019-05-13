@@ -4,14 +4,13 @@ package jukebox;
  *    Level 1
  */
 
+
 import javax.swing.SwingUtilities;
 
-public class JukeboxRunner {
+public class JukeboxRunner{
+	
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
-		
-	     Jukebox hi = new Jukebox();
-	     
-	     
 	}
 }
+		
