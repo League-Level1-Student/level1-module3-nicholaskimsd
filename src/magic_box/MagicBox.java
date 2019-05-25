@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -76,8 +77,61 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
+	//hi.playMusicOnComputer("src/Daequan.mp3");
 		
-		hi.speak("DAeQUAN LOCO, ooooff, LEBRON JAMES, FORTNITE RULES, HEY SISTERZ");
+		int go = e.getY();
+		int stop = e.getX();
+		System.out.println(go);
+		System.out.println(stop);
+		int i = 0;
+		if(e.getX()==172&&e.getY()==55) {
+			JOptionPane.showMessageDialog(null, "You have found a clue find the next clue");
+		
+		}
+		if(e.getX()==104&&e.getY()==467) {
+			JOptionPane.showMessageDialog(null, "you have found the clue you will buy new pants.  Find the next clue for your good boiii points");
+			
+		}
+		if(e.getX()==0&&e.getY()==467) {
+			String lol = JOptionPane.showInputDialog("YOu have found the final clue, for the good boiiii points you need to answer these questions."
+					+ "the first one is whats 9+10");
+			if(lol.equalsIgnoreCase("21")) {
+				
+				JOptionPane.showMessageDialog(null, "Good job you have 2 more questions");
+				i++;
+				
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "you suck and your trash go back to your hole.  LEAVE YOU ARE NOT WORTHY");
+				
+			}
+			String ko = JOptionPane.showInputDialog("Whose better Daequan or Ninja");
+			if(ko.equalsIgnoreCase("Ninja")) {
+				JOptionPane.showMessageDialog(null, "your a legend");
+				i++;
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "your a disgrace LEAVE NOW");
+			}
+			String jo = JOptionPane.showInputDialog("How many protons and electrons are in TUngsten");
+			if(jo.equalsIgnoreCase("148")) {
+				JOptionPane.showMessageDialog(null, "Wow good Job Nerd, but actually your a legend");
+				 i++;
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "STUPEEEEEEEEEEEEEEEE");
+			}
+			if(i==3) {
+				JOptionPane.showMessageDialog(null, "YOUR INSANE nad you get super boiiii points");
+			}
+			 if (i==2) {
+				JOptionPane
+				.showMessageDialog(null, "MEH");
+			}
+			 else {
+				 JOptionPane.showMessageDialog(null, "your actually Shareeish trassh");
+			 }
+		}
 	}
 
 	@Override

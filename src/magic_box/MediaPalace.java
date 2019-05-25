@@ -75,6 +75,7 @@ public class MediaPalace {
 	public void playMusicOnComputer(String fileName) {
 		File fileToPlay = new File(fileName);
 		try {
+			
 			java.awt.Desktop.getDesktop().open(fileToPlay);
 		} catch (IOException e1) {
 			e1.printStackTrace();
